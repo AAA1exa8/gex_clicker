@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="video.other">
+    <meta property="og:title" content="Say Gex">
+    <meta property="og:image" content="https://saygex.gay/gex_new.gif">
+    <meta property="og:url" content="https://saygex.gay">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Gex</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            margin: 0;
+            background-color: aqua;
+        }
+    
+        div {
+            display: flex;
+            width: 70%;
+            min-height: 90vh;
+            background-image: url("gex_new.gif");
+            image-rendering: pixelated;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // Preload images
+        const images = ["gex_new.gif", "sibex.gif", "sranstex.gif"];
+        const preloadedImages = images.map(src => {
+            const img = new Image();
+            img.src = src;
+            return img;
+        });
+
+        const div = document.querySelector('div');
+        let currentImageIndex = 0;
+
+        // Function to change the background image and synchronize the GIFs
+        function changeBackgroundImage(index) {
+            div.style.backgroundImage = `url(${images[index]})`;
+            currentImageIndex = index;
+        }
+
+        div.addEventListener('mouseover', () => changeBackgroundImage(1));
+        div.addEventListener('mouseout', () => changeBackgroundImage(0));
+        div.addEventListener('mousedown', () => changeBackgroundImage(2));
+        div.addEventListener('mouseup', () => changeBackgroundImage(1));
+    </script>
+</body>
+</html>

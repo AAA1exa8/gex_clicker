@@ -20,6 +20,7 @@ a:link {
 header {
     height: 5%;
     width: 70%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -66,7 +67,7 @@ nav {
     align-items: center;
     font-size: 2rem;
     padding: 10px 20px;
-    margin-bottom: 3px;
+    margin: 3px 0;
     background-color: #fefefe;
     border-radius: 10px;
     gap: 10px;
@@ -92,5 +93,16 @@ nav > *:hover {
 
     i {
         color: #8EC7D2;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        flex-direction: column-reverse;
+    }
+
+    header {
+        border-radius: 10px 10px 0 0;
+        width: 90%;
     }
 }

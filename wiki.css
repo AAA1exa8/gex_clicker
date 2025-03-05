@@ -85,6 +85,10 @@ article > section > a {
         background-color: #07485B;
     }
 
+    main > hr {
+        background-color: #8EC7D2;
+    }
+
     a:link, a:visited {
         color: #DBA507;
     }

@@ -47,7 +47,7 @@ header {
 
 main {
     box-sizing: border-box;
-    background-image: url("./gex_new-static.png");
+    background-image: url("/public/images/gex_new-static.png");
     flex-grow: 1;
     flex-shrink: 0;
     width: 50%;
@@ -59,7 +59,7 @@ main {
 
 main:hover {
     transform: scale(1.05);
-    background-image: url("./gex_new.gif");
+    background-image: url("/public/images/gex_new.gif");
 }
 
 main:active {

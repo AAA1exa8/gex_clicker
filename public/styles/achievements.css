@@ -10,16 +10,21 @@ body {
     image-rendering: pixelated;
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    color: #07485B;
 }
 
 a:link {
-    color: black;
+    color: #07485B;
     text-decoration: none;
 }
 
 a:visited {
-    color: black;
+    color: #07485B;
     text-decoration: none;
+}
+
+i {
+    color: #07485B;
 }
 
 main {
@@ -41,6 +46,7 @@ main {
 main > h1 {
     font-size: 2rem;
     font-weight: 700;
+    margin-bottom: -10px;
 }
 
 main > hr {
@@ -88,17 +94,26 @@ main > hr {
     font-weight: 300;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: end;
+    align-items: center;
+    position: sticky;
+    bottom: 3px;
+}
+
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
     padding: 10px 20px;
-    background-color: #fefefe;
+    background-color: #91D8E4;
     border-radius: 10px;
-    gap: 10px;
-    position: fixed;
-    bottom: 3px;
+    gap: 20px;
 }
 
 nav > * {
@@ -117,7 +132,7 @@ nav > *:hover {
 nav > a > p {
     position: absolute;
     font-size: 1rem;
-    background-color: #BFEAF5;
+    background-color: white;
     border-radius: 5px;
     padding: 5px;
     bottom: calc(100% + 13px);
@@ -145,18 +160,22 @@ nav > a:hover > p {
         background-color: #8EC7D2;
     }
 
-    nav {
-        background-color: #07485B;
+    i {
         color: #8EC7D2;
+    }
+
+    nav {
+        background-color: #8EC7D2;
+        color: #07485B;
+    }
+
+    nav > a > i {
+        color: #07485B;
     }
 
     nav > a > p {
         background-color: black;
         color: white;
-    }
-
-    i {
-        color: #07485B;
     }
 }
 

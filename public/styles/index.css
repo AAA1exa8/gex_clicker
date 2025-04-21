@@ -10,15 +10,16 @@ body {
     background-color: #91D8E4;
     image-rendering: pixelated;
     font-family: 'Roboto', sans-serif;
+    color: #07485B;
 }
 
 a:link {
-    color: black;
+    color: #07485B;
     text-decoration: none;
 }
 
 a:visited {
-    color: black;
+    color: #07485B;
     text-decoration: none;
 }
 
@@ -109,7 +110,8 @@ nav > *:hover {
 nav > a > p {
     position: absolute;
     font-size: 1rem;
-    background-color: #BFEAF5;
+    background-color: white;
+    color: black;
     border-radius: 5px;
     padding: 5px;
     bottom: calc(100% + 13px);

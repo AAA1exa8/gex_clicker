@@ -45,25 +45,39 @@ header {
     height: 32px;
 }
 
-main {
+#clicker-heart {
     box-sizing: border-box;
     background-image: url("/public/images/gex_new-static.png");
     flex-grow: 1;
     flex-shrink: 0;
-    width: 50%;
+    aspect-ratio: calc(72/68);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     margin: 50px;
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
 }
 
-main:hover {
+#clicker-heart:hover:not(.clicked):not(.regen) {
     transform: scale(1.05);
-    background-image: url("/public/images/gex_new.gif");
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
 }
 
-main:active {
-    transform: scale(0.9);
+#clicker-heart.clicked {
+    transform: scale(0.1);
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+}
+
+#clicker-heart.regen {
+    transition-property: transform;
+    transition-duration: 1800ms;
+    transition-timing-function: linear;
 }
 
 nav {

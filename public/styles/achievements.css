@@ -102,13 +102,33 @@ nav {
 }
 
 nav > * {
+    position: relative;
     transition-property: transform;
     transition-duration: 100ms;
     transition-timing-function: ease;
+    display: flex;
+    justify-content: center;
 }
 
 nav > *:hover {
     transform: scale(1.1) rotate(2deg);
+}
+
+nav > a > p {
+    position: absolute;
+    font-size: 1rem;
+    background-color: #BFEAF5;
+    border-radius: 5px;
+    padding: 5px;
+    bottom: calc(100% + 13px);
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-in-out;
+}
+
+nav > a:hover > p {
+    transform: scale(1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -125,11 +145,12 @@ nav > *:hover {
         background-color: #8EC7D2;
     }
 
-    nav {
+    nav, nav > a > p {
         background-color: #8EC7D2;
+        color: #07485B;
     }
 
-    nav > i {
+    i {
         color: #07485B;
     }
 }

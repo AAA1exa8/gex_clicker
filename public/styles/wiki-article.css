@@ -9,10 +9,29 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 10px;
+}
+
+nav > a, nav > a:link, nav > a:visited {
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
+    border-radius: 8px;
+    background-color: black;
+    color: #BFEAF5;
+    text-decoration: none;
+    transition-property: background-color transform border-radius; 
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+}
+
+nav > a:hover {
+    background-color: #1F1F1F;
+    transform: scale(1.05);
+    border-radius: 5px;
 }
 
 .bottom {
+    position: sticky;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -20,6 +39,7 @@ nav {
     flex-shrink: 0;
     justify-content: end;
     align-items: center;
+    bottom: 10px;
 }
 
 .paragraph-with-aside {
@@ -42,12 +62,23 @@ nav {
     margin-left: 55px;
     padding: 10px;
     border-radius: 10px;
-    margin-top: -5px;
+    height: fit-content;
+    gap: 5px;
 }
 
 h3 {
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+@media (max-width: 750px) {
+    nav > a {
+        font-size: 0;
+    }
+
+    nav > a i {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 650px) {
@@ -92,11 +123,38 @@ h3 {
         max-width: none;
         margin-left: 0;
     }
+
+    nav > a {
+        font-size: 0.9rem;
+    }
+
+    nav > a i {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    nav > a {
+        font-size: 0;
+    }
+
+    nav > a i {
+        font-size: 0.9rem;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
     .paragraph-with-aside > aside {
         background-color: #07485B;
+    }
+
+    nav > a, nav > a:link, nav > a:visited {
+        background-color: #8EC7D2;
+        color: #07485B;
+    }
+
+    nav > a:hover {
+        background-color: #97d3df;
     }
 
     @media (max-width: 550px) {

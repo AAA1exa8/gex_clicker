@@ -1,0 +1,143 @@
+body {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #91D8E4;
+    image-rendering: pixelated;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+main {
+    background-color: #BFEAF5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    flex-shrink: 0;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 25px;
+    gap: 15px;
+}
+
+main > h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+main > hr {
+    height: 1px;
+    background-color: black;
+    width: 90%;
+    border: none;
+}
+
+.achievement {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 2px;
+}
+
+.achiev-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.achiev-image {
+    width: 32px;
+    height: 32px;
+}
+
+.achiev-info,
+.achiev-status  {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.achiev-done {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.achiev-desc {
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 10px 20px;
+    background-color: #fefefe;
+    border-radius: 10px;
+    gap: 10px;
+    position: fixed;
+    bottom: 3px;
+}
+
+nav > *:hover {
+    transform: scale(1.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0D6986;
+        color: #8EC7D2;
+    }
+
+    main {
+        background-color: #07485B;
+    }
+
+    main > hr {
+        background-color: #8EC7D2;
+    }
+
+    nav {
+        background-color: #8EC7D2;
+    }
+
+    nav > i {
+        color: #07485B;
+    }
+}
+
+@media (max-width: 450px) {
+    .achiev-name {
+        font-size: 0.9rem;
+    }
+
+    .achiev-cost {
+        font-size: 0.9rem
+    }
+
+    .achiev-info {
+        flex-direction: column;
+    }
+}

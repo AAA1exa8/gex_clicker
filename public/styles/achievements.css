@@ -101,8 +101,14 @@ nav {
     bottom: 3px;
 }
 
+nav > * {
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+}
+
 nav > *:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(2deg);
 }
 
 @media (prefers-color-scheme: dark) {

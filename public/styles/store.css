@@ -166,9 +166,14 @@ nav > a:hover > p {
         background-color: #8EC7D2;
     }
 
-    nav, nav > a > p {
-        background-color: #8EC7D2;
-        color: #07485B;
+    nav {
+        background-color: #07485B;
+        color: #8EC7D2;
+    }
+
+    nav > a > p {
+        background-color: black;
+        color: white;
     }
 
     i {

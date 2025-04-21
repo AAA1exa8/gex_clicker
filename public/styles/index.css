@@ -48,6 +48,7 @@ header {
 #clicker-heart {
     box-sizing: border-box;
     background-image: url("/public/images/gex_new-static.png");
+    max-width: 90%;
     flex-grow: 1;
     flex-shrink: 0;
     aspect-ratio: calc(72/68);

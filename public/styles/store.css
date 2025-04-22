@@ -40,7 +40,7 @@ main {
     flex-grow: 1;
     border-radius: 10px;
     padding: 25px;
-    gap: 15px;
+    gap: 20px;
 }
 
 main > h1 {
@@ -52,8 +52,18 @@ main > h1 {
 main > hr {
     height: 1px;
     background-color: #07485B;
-    width: 90%;
     border: none;
+    width: 20%;
+    margin: -10px 0;
+    margin-left: calc(5% + 5px);
+    align-self: baseline;
+}
+
+main > hr:nth-child(2) {
+    width: 90%;
+    margin: 0;
+    margin-bottom: -5px;
+    align-self: center;
 }
 
 .shop-item {
@@ -83,6 +93,10 @@ main > hr {
     gap: 10px;
 }
 
+.item-name {
+    font-weight: 500;
+}
+
 .item-cost {
     display: flex;
     align-items: center;
@@ -90,16 +104,21 @@ main > hr {
 }
 
 .item-purchase {
-    background-color: #00000000;
+    background-color: #91D8E4;
     border: none;
-    transition-property: transform;
+    border-radius: 8px;
+    transition-property: transform border-radius color;
     transition-duration: 100ms;
     transition-timing-function: ease;
+    padding: 5px;
+    aspect-ratio: 1;
 }
 
 .item-purchase:hover {
+    background-color: #8EC7D2;
     transform: scale(1.1);
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .item-purchase:active {
@@ -179,11 +198,23 @@ nav > a:hover > p {
     }
 
     main > hr {
-        background-color: #456268;
+        background-color: #8EC7D2;
+    }
+
+    .item-purchase {
+        background-color: #8EC7D2;
+    }
+
+    .item-purchase:hover {
+        background-color: #91D8E4;
     }
 
     i {
         color: #8EC7D2;
+    }
+
+    .item-purchase > i {
+        color: #07485B;
     }
 
     nav {

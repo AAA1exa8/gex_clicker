@@ -83,6 +83,10 @@ main > hr {
     gap: 10px;
 }
 
+.achiev-name {
+    font-weight: 500;
+}
+
 .achiev-done {
     display: flex;
     align-items: center;
@@ -92,6 +96,7 @@ main > hr {
 .achiev-desc {
     font-size: 0.7rem;
     font-weight: 300;
+    margin-left: 44px;
 }
 
 footer {

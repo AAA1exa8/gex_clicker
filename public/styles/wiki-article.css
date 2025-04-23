@@ -4,15 +4,27 @@
 }
 
 nav {
-    box-sizing: border-box;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+
+nav > ul {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     padding: 0 10px;
 }
 
-nav > a, nav > a:link, nav > a:visited {
+nav li {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+nav a, nav a:link, nav a:visited {
     padding: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,.5);
     border-radius: 8px;
@@ -24,7 +36,7 @@ nav > a, nav > a:link, nav > a:visited {
     transition-timing-function: ease;
 }
 
-nav > a:hover {
+nav a:hover {
     background-color: #1F1F1F;
     transform: scale(1.05);
     border-radius: 5px;
@@ -72,11 +84,11 @@ h3 {
 }
 
 @media (max-width: 750px) {
-    nav > a {
+    nav a {
         font-size: 0;
     }
 
-    nav > a i {
+    nav a i {
         font-size: 1rem;
     }
 }
@@ -124,21 +136,21 @@ h3 {
         margin-left: 0;
     }
 
-    nav > a {
+    nav a {
         font-size: 0.9rem;
     }
 
-    nav > a i {
+    nav a i {
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 400px) {
-    nav > a {
+    nav a {
         font-size: 0;
     }
 
-    nav > a i {
+    nav a i {
         font-size: 0.9rem;
     }
 }
@@ -148,12 +160,12 @@ h3 {
         background-color: #07485B;
     }
 
-    nav > a, nav > a:link, nav > a:visited {
+    nav a, nav a:link, nav a:visited {
         background-color: #8EC7D2;
         color: #07485B;
     }
 
-    nav > a:hover {
+    nav a:hover {
         background-color: #97d3df;
     }
 

@@ -118,10 +118,14 @@ nav {
     padding: 10px 20px;
     background-color: #91D8E4;
     border-radius: 10px;
+}
+
+nav > ul, nav > ul > li {
+    display: flex;
     gap: 20px;
 }
 
-nav > * {
+nav > ul > li > a {
     position: relative;
     transition-property: transform;
     transition-duration: 100ms;
@@ -130,14 +134,15 @@ nav > * {
     justify-content: center;
 }
 
-nav > *:hover {
+nav > ul > li:hover {
     transform: scale(1.1) rotate(2deg);
 }
 
-nav > a > p {
+nav > ul > li > a > p {
     position: absolute;
     font-size: 1rem;
     background-color: white;
+    color: black;
     border-radius: 5px;
     padding: 5px;
     bottom: calc(100% + 13px);
@@ -147,7 +152,7 @@ nav > a > p {
     transition-timing-function: ease-in-out;
 }
 
-nav > a:hover > p {
+nav > ul > li > a:hover > p {
     transform: scale(1);
 }
 
@@ -174,11 +179,11 @@ nav > a:hover > p {
         color: #07485B;
     }
 
-    nav > a > i {
+    nav a > i {
         color: #07485B;
     }
 
-    nav > a > p {
+    nav a > p {
         background-color: black;
         color: white;
     }

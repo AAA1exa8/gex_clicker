@@ -21,48 +21,52 @@
 </head>
 <body class="topography-pattern">
     <header>
-        <div class="currency" id="bi-coin">
-            <img src="/public/images/sibex-static.png" alt="bi">
-            <p id="bi-amount"></p>
-            <p id="bi-gain" class="change"></p>
-        </div>
-        <div class="currency" id="gay-coin">
-            <img src="/public/images/gex_new-static.png" alt="gay">
-            <p id="gay-amount"></p>
-            <p id="gay-gain" class="change"></p>
-        </div>
-        <div class="currency" id="trans-coin">
-            <img src="/public/images/sranstex-static.png" alt="trans">
-            <p id="trans-amount"></p>
-            <p id="trans-gain" class="change"></p>
-        </div>
-        <div class="currency" id="poly-coin">
-            <img src="/public/images/poly.webp" alt="poly">
-            <p id="poly-amount"></p>
-            <p id="poly-gain" class="change"></p>
-        </div>
+        <ul>
+            <li class="currency" id="bi-coin">
+                <img src="/public/images/sibex-static.png" alt="bi">
+                <p id="bi-amount"></p>
+                <p id="bi-gain" class="change"></p>
+            </li>
+            <li class="currency" id="gay-coin">
+                <img src="/public/images/gex_new-static.png" alt="gay">
+                <p id="gay-amount"></p>
+                <p id="gay-gain" class="change"></p>
+            </li>
+            <li class="currency" id="trans-coin">
+                <img src="/public/images/sranstex-static.png" alt="trans">
+                <p id="trans-amount"></p>
+                <p id="trans-gain" class="change"></p>
+            </li>
+            <li class="currency" id="poly-coin">
+                <img src="/public/images/poly.webp" alt="poly">
+                <p id="poly-amount"></p>
+                <p id="poly-gain" class="change"></p>
+            </li>
+        </ul>
     </header>
     <main>
         <h1>Shop</h1>
         <hr>
-        <div class="shop-item">
+        <article class="shop-item">
             <div class="item-info-container">
-                <div class="item-info">
+                <section class="item-info">
                     <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
+                    <h2 class="item-name">Placeholder Item</h2>
                     <p>(12)</p>
-                </div>
-                <div class="item-status">
+                </section>
+                <section class="item-status">
                     <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
                     <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
+                </section>
             </div>
             <p class="item-desc">Increases x by y</p>
-        </div>
+        </article>
         <footer>
             <nav>
-                <a href="index.html"><p>Back</p><i class="fa-solid fa-arrow-left"></i></a>
-                <a href="wiki.html"><p>Wiki</p><i class="fa-solid fa-circle-info"></i></a>
+                <ul>
+                    <li><a href="index.html"><p>Back</p><i class="fa-solid fa-arrow-left"></i></a></li>
+                    <li><a href="wiki.html"><p>Wiki</p><i class="fa-solid fa-circle-info"></i></a></li>
+                </ul>
             </nav>
         </footer>
     </main>

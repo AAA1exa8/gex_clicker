@@ -23,29 +23,6 @@ a:visited {
     text-decoration: none;
 }
 
-header {
-    height: 5%;
-    width: 70%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #BFEAF5;
-    border-radius: 0 0 10px 10px;
-}
-
-.currency {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.currency > img {
-    padding: 5px;
-    height: 32px;
-}
 
 #clicker-heart {
     box-sizing: border-box;
@@ -130,10 +107,6 @@ nav > a:hover > p {
     body {
         background-color: #0D6986;
         color: #8EC7D2;
-    }
-
-    header {
-        background-color: #07485B;
     }
 
     nav {

@@ -31,19 +31,22 @@ header > ul {
 .currency .change {
     font-size: 0.9rem;
     margin-left: 5px;
-    transition-property: opacity;
-    transition-duration: 250ms;
+    transition-property: opacity color;
+    transition-duration: 1000ms;
     transition-timing-function: linear;
+    opacity: 0;
 }
 
 .currency .loss {
     transition-duration: 50ms;
     color: #c40c2e;
+    opacity: 1;
 }
 
 .currency .gain {
     transition-duration: 50ms;
     color: #179c43;
+    opacity: 1;
 }
 
 @media (prefers-color-scheme: dark) {

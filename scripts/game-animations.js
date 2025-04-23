@@ -4,14 +4,15 @@ let heart = document.getElementById("clicker-heart");
 
 heart.addEventListener("click", () => {
     if (heart.classList.contains("clicked") || heart.classList.contains("regen")) return;
-    heart.style.backgroundImage = 'url("/public/images/gex_new.gif")';
+    const image = localStorage.getItem("heart_image");
+    heart.style.backgroundImage = `url("/public/images/${image}.gif")`;
     heart.classList.add("clicked");
     setTimeout(() => {
         heart.classList.remove("clicked");
         heart.classList.add("regen");
     }, 200);
     setTimeout(() => {
-        heart.style.backgroundImage = 'url("/public/images/gex_new-static.png")';
+        heart.style.backgroundImage = `url("/public/images/${image}-static.png")`;
         heart.classList.remove("regen");
     }, 2000);
 });

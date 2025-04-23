@@ -1,5 +1,9 @@
+let clickInhibit = false;
+
 let heart = document.getElementById("clicker-heart");
-heart.addEventListener("click", (ev) => {
+
+heart.addEventListener("click", () => {
+    if (heart.classList.contains("clicked") || heart.classList.contains("regen")) return;
     heart.style.backgroundImage = 'url("/public/images/gex_new.gif")';
     heart.classList.add("clicked");
     setTimeout(() => {

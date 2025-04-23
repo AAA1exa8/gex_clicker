@@ -22,6 +22,24 @@ header {
     height: 32px;
 }
 
+.currency .change {
+    font-size: 0.9rem;
+    margin-left: 5px;
+    transition-property: opacity;
+    transition-duration: 250ms;
+    transition-timing-function: linear;
+}
+
+.currency .loss {
+    transition-duration: 50ms;
+    color: #c40c2e;
+}
+
+.currency .gain {
+    transition-duration: 50ms;
+    color: #179c43;
+}
+
 @media (prefers-color-scheme: dark) {
     header {
         background-color: #07485B;

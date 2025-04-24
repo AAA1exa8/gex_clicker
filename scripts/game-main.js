@@ -1,7 +1,5 @@
 const changeEvent = new Event("currencychange");
 
-let heart = document.getElementById("clicker-heart");
-
 function changeCurrencyValue(currency, delta) {
     localStorage.setItem(currency, localStorage.getItem(currency) + delta);
     let container = document.getElementById(currency);

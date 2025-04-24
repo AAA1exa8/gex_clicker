@@ -6,7 +6,7 @@ function changeCurrencyValue(currency, delta) {
     container.dispatchEvent(changeEvent);
 }
 
-if (heart) {
+if (typeof heart !== undefined) {
     heart.addEventListener("manualgain", () => {
         changeCurrencyValue("bi", localStorage.getItem("bi-per-click"));
         changeCurrencyValue("gay", localStorage.getItem("gay-per-click"));

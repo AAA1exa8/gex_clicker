@@ -17,7 +17,7 @@ let ui = {
     }
 };
 
-for (currency in ui) {
+for (const currency in ui) {
     if (!localStorage.getItem(currency)) {
         localStorage.setItem(currency, 0);
     }
@@ -45,7 +45,7 @@ function updateCurrencyUI(currency) {
     }
 }
 
-for (currency in ui) {
+for (const currency in ui) {
     updateCurrencyUI(currency);
     let container = document.getElementById(currency);
     container.addEventListener("currencychange", () => {

@@ -17,12 +17,6 @@ let ui = {
     }
 };
 
-for (const currency in ui) {
-    if (!localStorage.getItem(currency)) {
-        localStorage.setItem(currency, 0);
-    }
-}
-
 function updateCurrencyUI(currency) {
     const value = localStorage.getItem(currency);
     const delta = value - ui[currency].value.textContent;

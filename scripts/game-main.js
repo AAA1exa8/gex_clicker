@@ -13,6 +13,7 @@ if (heart) {
         changeCurrencyValue("bi", localStorage.getItem("bi-per-click"));
         changeCurrencyValue("gay", localStorage.getItem("gay-per-click"));
         changeCurrencyValue("trans", localStorage.getItem("trans-per-click"));
+        changeCurrencyValue("poly", localStorage.getItem("poly-per-click"));
     });
 }
 

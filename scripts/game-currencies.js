@@ -24,16 +24,22 @@ function updateCurrencyUI(currency) {
     ui[currency].value.textContent = value;
     
     if (delta > 0) {
-        ui[currency].value.classList.remove("loss");
-        ui[currency].value.classList.add("gain");
-        ui[currency].value.textContent = `+${delta}`;
+        ui[currency].change.classList.remove("loss");
+        ui[currency].change.classList.add("gain");
+        ui[currency].change.textContent = `+${delta}`;
+        setTimeout(() => {
+            updateCurrencyUI(currency);
+        }, 100);
     } else if (delta == 0) {
-        ui[currency].value.classList.remove("loss");
-        ui[currency].value.classList.remove("gain");
+        ui[currency].change.classList.remove("loss");
+        ui[currency].change.classList.remove("gain");
     } else if (delta < 0) {
-        ui[currency].value.classList.remove("gain");
-        ui[currency].value.classList.add("loss");
-        ui[currency].value.textContent = delta;
+        ui[currency].change.classList.remove("gain");
+        ui[currency].change.classList.add("loss");
+        ui[currency].change.textContent = delta;
+        setTimeout(() => {
+            updateCurrencyUI(currency);
+        }, 100);
     } else {
         console.error(`Currency delta of ${currency} was not valid! Delta: ${delta}`);
     }

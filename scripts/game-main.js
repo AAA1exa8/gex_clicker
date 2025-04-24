@@ -1,7 +1,7 @@
 const changeEvent = new Event("currencychange");
 
 function changeCurrencyValue(currency, delta) {
-    localStorage.setItem(currency, localStorage.getItem(currency) + delta);
+    localStorage.setItem(currency, Number(localStorage.getItem(currency)) + Number(delta));
     let container = document.getElementById(currency);
     container.dispatchEvent(changeEvent);
 }

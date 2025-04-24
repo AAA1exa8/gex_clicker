@@ -1,5 +1,3 @@
-let clickInhibit = false;
-
 let heart = document.getElementById("clicker-heart");
 
 let image = localStorage.getItem("heart_image");
@@ -8,6 +6,8 @@ if (!image) {
 }
 heart.style.backgroundImage = `url("/public/images/${image}-static.png")`;
 
+const clickEvent = new Event("manualgain");
+
 heart.addEventListener("click", () => {
     if (heart.classList.contains("clicked") || heart.classList.contains("regen")) return;
     heart.style.backgroundImage = `url("/public/images/${image}.gif")`;
@@ -15,6 +15,7 @@ heart.addEventListener("click", () => {
     setTimeout(() => {
         heart.classList.remove("clicked");
         heart.classList.add("regen");
+        heart.dispatchEvent(clickEvent);
     }, 200);
     setTimeout(() => {
         heart.style.backgroundImage = `url("/public/images/${image}-static.png")`;

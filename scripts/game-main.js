@@ -15,3 +15,21 @@ if (heart) {
         changeCurrencyValue("trans", localStorage.getItem("trans-per-click"));
     });
 }
+
+function registerGenerator(generator) {
+    setInterval(() => {
+        for (const currency of generator.currencies) {
+            changeCurrencyValue(currency.name, currency.gain);
+        }
+    }, generator.frequency);
+}
+
+const generators = JSON.parse(localStorage.getItem("currency-generators"));
+for (const generator of generators) {
+    setInterval(() => {
+        for (const currency of generator.currencies) {
+            changeCurrencyValue(currency.name, currency.gain * generator.count);
+        }
+    }, generator.frequency);
+}
+

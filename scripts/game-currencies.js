@@ -19,7 +19,7 @@ let ui = {
 
 function updateCurrencyUI(currency) {
     const value = localStorage.getItem(currency);
-    const delta = value - ui[currency].value.textContent;
+    const delta = ui[currency].value.textContent !== "" ? value - ui[currency].value.textContent : 0;
 
     ui[currency].value.textContent = value;
     

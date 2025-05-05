@@ -98,6 +98,14 @@ main > hr {
     gap: 3px;
 }
 
+.item-cost.expensive {
+    color: #c40c2e;
+}
+
+.item-cost.expensive img {
+    filter: grayscale(100%);
+}
+
 .item-purchase {
     background-color: #91D8E4;
     border: none;
@@ -120,8 +128,16 @@ main > hr {
     transform: scale(1.0);
 }
 
+.item-purchase.disabled {
+    background-color: #91D8E4;
+    transform: scale(1.0);
+    cursor: default;
+    border-radius: 8px;
+
+}
+
 .currency-icon {
-    width: 20px;
+    width: 18px;
 }
 
 .item-desc {
@@ -138,6 +154,7 @@ footer {
     align-items: center;
     position: sticky;
     bottom: 3px;
+    order: 1;
 }
 
 nav {
@@ -210,6 +227,10 @@ nav > ul > li > a:hover > p {
 
     .item-purchase:hover {
         background-color: #91D8E4;
+    }
+
+    .item-purchase.disabled {
+        background-color: #8EC7D2;
     }
 
     i {

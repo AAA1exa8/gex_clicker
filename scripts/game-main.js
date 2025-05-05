@@ -1,10 +1,5 @@
 const changeEvent = new Event("currencychange");
-
-function changeCurrencyValue(currency, delta) {
-    localStorage.setItem(currency, Number(localStorage.getItem(currency)) + Number(delta));
-    let container = document.getElementById(currency);
-    container.dispatchEvent(changeEvent);
-}
+const genEvent = new Event("generatorgain");
 
 if (typeof heart !== undefined) {
     heart.addEventListener("manualgain", () => {
@@ -13,6 +8,13 @@ if (typeof heart !== undefined) {
         changeCurrencyValue("trans", localStorage.getItem("trans-per-click"));
         changeCurrencyValue("poly", localStorage.getItem("poly-per-click"));
     });
+
+    const autoclickInterval = localStorage.getItem("autoclick-frequency");
+    if (typeof autoclickInterval !== undefined) {
+        setInterval(() => {
+            heart.dispatchEvent("click");
+        }, autoclickInterval);
+    }
 }
 
 function registerGenerator(generator) {
@@ -24,11 +26,21 @@ function registerGenerator(generator) {
 }
 
 const generators = JSON.parse(localStorage.getItem("currency-generators"));
-for (const generator of generators) {
+for (const generator of Object.values(generators)) {
     setInterval(() => {
-        for (const currency of generator.currencies) {
-            changeCurrencyValue(currency.name, currency.gain * generator.count);
-        }
+        changeCurrencyValue(
+            generator.currency,
+            generator.gain * generator.count,
+        );
+        window.dispatchEvent(genEvent);
     }, generator.frequency);
 }
 
+window.addEventListener("buygen", () => {
+    const gen = sessionStorage.getItem("gen-to-handle");
+    setInterval(() => {
+        changeCurrencyValue(gen.currency, gen.gain * gen.count);
+        window.dispatchEvent(genEvent);
+    }, gen.frequency);
+    sessionStorage.removeItem("gen-to-handle");
+});

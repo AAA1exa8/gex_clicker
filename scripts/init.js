@@ -268,9 +268,6 @@ function undev() {
 // === LIBRARY FUNCTIONS ===
 
 function changeCurrencyValue(currency, delta) {
-    if (delta === 0) {
-        return;
-    }
     localStorage.setItem(
         currency,
         Number(localStorage.getItem(currency)) + Number(delta),

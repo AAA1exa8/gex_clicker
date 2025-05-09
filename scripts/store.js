@@ -287,6 +287,7 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                         frequency: item.gain.frequency,
                         count: 1,
                     };
+                    sessionStorage.setItem(`last-run-${item.id}`, Date.now());
                 }
                 localStorage.setItem(
                     "currency-generators",

@@ -29,21 +29,24 @@ function canBuyItem(item) {
 }
 
 function getItemCostHTML(item) {
+    if (owned[item.id] === item.max) {
+        return "";
+    }
     let result = "";
 
     const mul = 1 + item.cost.baseMul * owned[item.id];
     const add = item.cost.baseIncrease * owned[item.id];
     if (item.cost.bi * mul + add !== 0) {
-        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-bi"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> ${item.cost.bi * mul + add}</p>`;
+        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-bi"><img src="/public/images/sibex-static.webp" alt="bi" class="currency-icon"> ${item.cost.bi * mul + add}</p>`;
     }
     if (item.cost.gay * mul + add !== 0) {
-        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-gay"><img src="/public/images/gex_new-static.png" alt="gay" class="currency-icon"> ${item.cost.gay * mul + add}</p>`;
+        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-gay"><img src="/public/images/saygex-static.webp" alt="gay" class="currency-icon"> ${item.cost.gay * mul + add}</p>`;
     }
     if (item.cost.trans * mul + add !== 0) {
-        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-trans"><img src="/public/images/sranstex-static.png" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
+        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-trans"><img src="/public/images/sranstex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
     if (item.cost.poly * mul + add !== 0) {
-        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-poly"><img src="/public/images/poly-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
+        result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-poly"><img src="/public/images/solypex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
 
     return result;
@@ -53,18 +56,28 @@ function refreshAvailability(gain = true) {
     for (let cost of document.querySelectorAll(
         gain ? ".item-cost.expensive" : ".item-cost:not(.expensive)",
     )) {
-        const currency = cost.id.split("-")[-1];
+        const splitID = cost.id.split("-");
+        const currency = splitID[splitID.length - 1];
         const itemID = cost.id.substring(
             0,
             cost.id.length - currency.length - 1,
         );
-        const item = items[itemID];
+        const item = items.find(v => v.id === itemID);
+        let icon = document.getElementById(`${item.id}-icon`);
+
+        if (owned[itemID] === item.max) {
+            cost.style.display = "none";
+            icon.style.display = "none";
+            continue;
+        }
 
         if (gain && canBuyItemCurrency(item, currency)) {
             cost.classList.remove("expensive");
+            icon.classList.remove("expensive");
         }
         if (!gain && !canBuyItemCurrency(item, currency)) {
             cost.classList.add("expensive");
+            icon.classList.add("expensive");
         }
     }
 
@@ -89,8 +102,10 @@ function ownsRequirements(item) {
     return true;
 }
 
-for (const item in items.filter((v) => owned[v.id] !== v.max)) {
-    if (item.minPoly > poly || (item.maxPoly < poly && item.maxPoly != -1)) {
+for (const item of items) {
+    if (item.minPoly > poly 
+        || (item.maxPoly < poly && item.maxPoly != -1)
+        || (owned[item.id] === item.max && item.max === 1)) {
         continue;
     }
 
@@ -101,22 +116,28 @@ for (const item in items.filter((v) => owned[v.id] !== v.max)) {
         entry.classList.add(`requires-${id}`);
     }
 
-    entry.innerHTML += `<div class="item-info-container">`;
-    entry.innerHTML += `    <section class="item-info">`;
-    entry.innerHTML += `        <img src="${item.iconPath}" alt="" class="item-image">`;
-    entry.innerHTML += `        <h2 class="item-name">${item.name}</h2>`;
-    if (owned[item.id] !== 0) {
-        entry.innerHTML += `<p id="${item.id}-owned">(${owned[item.id]})</p>`;
+    let inner = "";
+
+    inner += `<div class="item-info-container">`;
+    inner += `    <section class="item-info">`;
+    inner += `        <img src="${item.iconPath}" alt="" class="item-image ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-icon">`;
+    inner += `        <h2 class="item-name">${item.name}</h2>`;
+    if (owned[item.id] === item.max) {
+        inner += `<p id="${item.id}-owned">(MAX)</p>`;
+    } else if (owned[item.id] !== 0) {
+        inner += `<p id="${item.id}-owned">(${owned[item.id]})</p>`;
     } else {
-        entry.innerHTML += `<p id="${item.id}-owned"></p>`;
+        inner += `<p id="${item.id}-owned"></p>`;
     }
-    entry.innerHTML += `    </section>`;
-    entry.innerHTML += `    <section class="item-status">`;
-    entry.innerHTML += getItemCostHTML(item);
-    entry.innerHTML += `        <button class="item-purchase ${canBuyItem(item) ? "" : "disabled"}" id="${item.id}"><i class="fa-solid fa-cart-shopping"></i></button>`;
-    entry.innerHTML += `    </section>`;
-    entry.innerHTML += `</div>`;
-    entry.innerHTML += `<p class="item-desc">${item.description}</p>`;
+    inner += `    </section>`;
+    inner += `    <section class="item-status">`;
+    inner += getItemCostHTML(item);
+    inner += `        <button class="item-purchase ${canBuyItem(item) ? "" : "disabled"}" id="${item.id}" ${owned[item.id] === item.max ? 'style="display: none"' : ""}><i class="fa-solid fa-cart-shopping"></i></button>`;
+    inner += `    </section>`;
+    inner += `</div>`;
+    inner += `<p class="item-desc">${item.description}</p>`;
+
+    entry.innerHTML = inner;
 
     if (!ownsRequirements(item)) {
         entry.style.display = "none";
@@ -125,7 +146,7 @@ for (const item in items.filter((v) => owned[v.id] !== v.max)) {
     footer.before(entry);
 }
 
-for (const purchase of document.querySelectorAll("item-purchase")) {
+for (const purchase of document.querySelectorAll(".item-purchase")) {
     purchase.addEventListener("click", () => {
         const item = items.find((v) => v.id === purchase.id);
         if (!canBuyItem(item)) {
@@ -139,11 +160,13 @@ for (const purchase of document.querySelectorAll("item-purchase")) {
         changeCurrencyValue("poly", -item.cost.poly);
         refreshAvailability(false);
         owned[item.id] += 1;
+        localStorage.setItem("owned", JSON.stringify(owned));
         ownedUI.textContent = `(${owned[item.id]})`;
 
         if (owned[item.id] === item.max) {
             ownedUI.textContent = "(MAX)";
-            purchase.classList.add("disabled");
+            //purchase.classList.add("disabled");
+            purchase.style.display = "none";
 
             let parent = document.getElementById(`${item.id}-container`);
 
@@ -156,9 +179,11 @@ for (const purchase of document.querySelectorAll("item-purchase")) {
             )) {
                 if (
                     ownsRequirements(
-                        dependent.id.substring(
-                            0,
-                            dependent.id.length - "-container".length,
+                        items.find(v => v.id ===
+                            dependent.id.substring(
+                                0,
+                                dependent.id.length - "-container".length,
+                            )
                         ),
                     )
                 ) {
@@ -198,7 +223,7 @@ for (const purchase of document.querySelectorAll("item-purchase")) {
                 let gens = JSON.parse(
                     localStorage.getItem("currency-generators"),
                 );
-                if (typeof gens[item.id] !== undefined) {
+                if (gens[item.id] !== undefined) {
                     gens[item.id].count += 1;
                 } else {
                     gens[item.id] = {
@@ -212,10 +237,6 @@ for (const purchase of document.querySelectorAll("item-purchase")) {
                     "currency-generators",
                     JSON.stringify(gens),
                 );
-
-                sessionStorage.setItem("gen-to-handle", gens[item.id]);
-                const buyGenEvent = new Event("boughtgen");
-                window.dispatchEvent(buyGenEvent);
                 break;
             }
             case "autoclick": {
@@ -228,9 +249,11 @@ for (const purchase of document.querySelectorAll("item-purchase")) {
 
             case "rebirth": {
                 changeCurrencyValue("poly", item.gain.amount);
-                for (const currency of item.gain.reset) {
+                for (const currency of ["bi", "gay", "trans"]) {
                     setCurrencyValue(currency, 0);
                 }
+                clearOwned();
+                setHeartByCurrency("bi");
                 break;
             }
 

@@ -129,11 +129,10 @@ main > hr {
 }
 
 .item-purchase.disabled {
-    background-color: #91D8E4;
-    transform: scale(1.0);
+    filter: grayscale(100%);
+    transform: scale(1);
     cursor: default;
     border-radius: 8px;
-
 }
 
 .currency-icon {
@@ -227,10 +226,6 @@ nav > ul > li > a:hover > p {
 
     .item-purchase:hover {
         background-color: #91D8E4;
-    }
-
-    .item-purchase.disabled {
-        background-color: #8EC7D2;
     }
 
     i {

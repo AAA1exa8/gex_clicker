@@ -1,46 +1,39 @@
 const changeEvent = new Event("currencychange");
 const genEvent = new Event("generatorgain");
 
-if (typeof heart !== undefined) {
-    heart.addEventListener("manualgain", () => {
+let clickerHeart = document.getElementById("clicker-heart");
+
+if (clickerHeart) {
+    clickerHeart.addEventListener("manualgain", () => {
         changeCurrencyValue("bi", localStorage.getItem("bi-per-click"));
         changeCurrencyValue("gay", localStorage.getItem("gay-per-click"));
         changeCurrencyValue("trans", localStorage.getItem("trans-per-click"));
         changeCurrencyValue("poly", localStorage.getItem("poly-per-click"));
     });
 
-    const autoclickInterval = localStorage.getItem("autoclick-frequency");
-    if (typeof autoclickInterval !== undefined) {
+    const autoclickInterval = Number(localStorage.getItem("autoclick-frequency"));
+    if (autoclickInterval !== -1) {
         setInterval(() => {
-            heart.dispatchEvent("click");
+            clickerHeart.click();
         }, autoclickInterval);
     }
 }
 
-function registerGenerator(generator) {
-    setInterval(() => {
-        for (const currency of generator.currencies) {
-            changeCurrencyValue(currency.name, currency.gain);
+setInterval(() => {
+    const generators = JSON.parse(localStorage.getItem("currency-generators"));
+    for (const generator in generators) {
+        const gen = generators[generator];
+        const lastDate = Number(sessionStorage.getItem(`last-run-${generator}`));
+        const delta = Date.now() - lastDate;
+        let mul = 1;
+        console.log(delta);
+        if (Number.isFinite(delta)) {
+            mul = Math.floor(delta / gen.frequency);
         }
-    }, generator.frequency);
-}
-
-const generators = JSON.parse(localStorage.getItem("currency-generators"));
-for (const generator of Object.values(generators)) {
-    setInterval(() => {
-        changeCurrencyValue(
-            generator.currency,
-            generator.gain * generator.count,
-        );
-        window.dispatchEvent(genEvent);
-    }, generator.frequency);
-}
-
-window.addEventListener("buygen", () => {
-    const gen = sessionStorage.getItem("gen-to-handle");
-    setInterval(() => {
-        changeCurrencyValue(gen.currency, gen.gain * gen.count);
-        window.dispatchEvent(genEvent);
-    }, gen.frequency);
-    sessionStorage.removeItem("gen-to-handle");
-});
+        if (delta > gen.frequency) {
+            changeCurrencyValue(gen.currency, gen.gain * gen.count * mul);
+            sessionStorage.setItem(`last-run-${generator}`, Date.now());
+        }
+    }
+    lastGenRun = Date.now();
+}, 500);

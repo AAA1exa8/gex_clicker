@@ -259,6 +259,11 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                     setHeartByCurrency(item.gain.currency);
                     const newHeart = localStorage.getItem("heart-image");
                     explode(oldHeart, newHeart);
+
+                    let unlocked = JSON.parse(localStorage.getItem("unlocked-currencies"));
+                    unlocked[item.gain.currency] = true;
+                    localStorage.setItem("unlocked-currencies", JSON.stringify(unlocked));
+                    changeCurrencyValue(item.gain.currency, 0); // Refresh currency bar
                 }
                 break;
             }

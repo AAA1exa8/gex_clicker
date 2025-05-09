@@ -217,6 +217,13 @@ function init() {
     initStorage("heart-image", "sibex");
     initStorage("gay-class", "saygex");
 
+    initStorage("unlocked-currencies", JSON.stringify({
+        bi: true,
+        gay: false,
+        trans: false,
+        poly: false
+    }));
+
     initStorage("bi", 0);
     initStorage("gay", 0);
     initStorage("trans", 0);
@@ -292,6 +299,13 @@ function setHeartByCurrency(currency) {
 }
 
 function clearOwned() {
+    localStorage.setItem("unlocked-currencies", JSON.stringify({
+        bi: true,
+        gay: false,
+        trans: false,
+        poly: true
+    }));
+
     localStorage.setItem("bi", 0);
     localStorage.setItem("gay", 0);
     localStorage.setItem("trans", 0);

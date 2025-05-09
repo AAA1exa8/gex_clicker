@@ -18,6 +18,14 @@ let ui = {
 };
 
 function updateCurrencyUI(currency) {
+    const unlocked = JSON.parse(localStorage.getItem("unlocked-currencies"));
+    let container = document.getElementById(currency);
+    if (unlocked[currency]) {
+        container.classList.remove("locked");
+    } else {
+        container.classList.add("locked");
+    }
+
     const value = localStorage.getItem(currency);
     const delta = ui[currency].value.textContent !== "" ? value - ui[currency].value.textContent : 0;
 

@@ -49,6 +49,14 @@ header > ul {
     opacity: 1;
 }
 
+.currency.locked img {
+    filter: grayscale(100%);
+}
+
+.currency.locked p {
+    display: none;
+}
+
 @media (prefers-color-scheme: dark) {
     header {
         background-color: #07485B;

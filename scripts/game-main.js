@@ -26,7 +26,6 @@ setInterval(() => {
         const lastDate = Number(sessionStorage.getItem(`last-run-${generator}`));
         const delta = Date.now() - lastDate;
         let mul = 1;
-        console.log(delta);
         if (Number.isFinite(delta)) {
             mul = Math.floor(delta / gen.frequency);
         }

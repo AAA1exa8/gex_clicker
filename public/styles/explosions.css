@@ -13,6 +13,20 @@
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+@keyframes shake-lots {
+    0% { transform: translate(2px, 2px) rotate(0deg); }
+    10% { transform: translate(-2px, -4px) rotate(-2deg); }
+    20% { transform: translate(-6px, 0px) rotate(2deg); }
+    30% { transform: translate(6px, 4px) rotate(0deg); }
+    40% { transform: translate(2px, -2px) rotate(2deg); }
+    50% { transform: translate(-2px, 4px) rotate(-2deg); }
+    60% { transform: translate(-6px, 2px) rotate(0deg); }
+    70% { transform: translate(6px, 2px) rotate(-2deg); }
+    80% { transform: translate(-2px, -2px) rotate(2deg); }
+    90% { transform: translate(2px, 4px) rotate(0deg); }
+    100% { transform: translate(2px, -4px) rotate(-2deg); }
+}
+
 .overlay {
     display: flex;
     flex-direction: column;
@@ -23,9 +37,9 @@
     width: 100%;
     height: 100%;
     background-color: #00000080;
+    transition-property: opacity;
     transition-duration: 500ms;
     transition-timing-function: linear;
-    transition-property: opacity;
 }
 
 .overlay.hidden {
@@ -42,45 +56,9 @@
     animation-iteration-count: 2;
 }
 
-.explosion-subject.charging {
-    transition-property: transform;
-    transform: scale(2);
-    transition-timing-function: ease-out;
-    transition-duration: 3s;
-}
-
-.explosion-subject.bright {
-    animation: shake 0.25s;
-    animation-iteration-count: infinite;
-    transition-property: filter;
-    transition-timing-function: linear;
-    transition-duration: 1s;
-    filter: brightness(25);
-    transform: scale(2);
-}
-
-.explosion-subject.imploding {
-    transition-property: transform;
-    transition-timing-function: linear;
-    transition-duration: 200ms;
-    transform: scale(0.01);
-    filter: brightness(25);
-}
-
-.explosion-subject.exploding {
-    transition-property: transform;
-    transition-timing-function: ease-out;
-    transition-duration: 150ms;
-    transform: scale(1.05);
-    filter: brightness(25);
-}
-
-.explosion-subject.fading-out {
-    transition-property: filter, transform;
-    transition-timing-function: linear;
-    transition-duration: 1000ms;
-    filter: none;
-    transform: scale(1);
+.explosion-subject.shaking-lots {
+    animation: shake-lots 0.25s;
+    animation-iteration-count: 2;
 }
 
 .explosion-text {

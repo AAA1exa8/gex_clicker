@@ -102,6 +102,111 @@ function ownsRequirements(item) {
     return true;
 }
 
+function explode(oldHeart, newHeart, text = "New currency unlocked!") {
+    let overlay = document.querySelector("div.overlay");
+    let overlayHeart = document.querySelector("img.explosion-subject");
+    let overlayText = document.querySelector("p.explosion-text");
+
+    overlay.style.display = "flex";
+    overlayHeart.src = `/public/images/${oldHeart}-static.webp`;
+    setTimeout(() => {
+        overlay.classList.remove("hidden");
+        overlay.animate([
+            {
+                opacity: "0%"
+            },
+            {
+                opacity: "100%"
+            }
+        ], {
+            duration: 500,
+            easing: "linear"
+        }).addEventListener("finish", () => {
+            overlayHeart.classList.add("shaking");
+            setTimeout(() => {
+                overlayHeart.classList.remove("shaking");
+                setTimeout(() => {
+                    overlayHeart.classList.add("shaking-lots");
+                }, 2500);
+                overlayHeart.animate([
+                    {
+                        transform: "scale(1)"
+                    },
+                    {
+                        transform: "scale(2)",
+                        filter: "brightness(25)"
+                    }
+                ], {
+                    duration: 3000,
+                    easing: "ease-out"
+                }).addEventListener("finish", () => {
+                    overlayHeart.animate([
+                        {
+                            transform: "scale(2)",
+                            filter: "brightness(25)"
+                        },
+                        {
+                            transform: "scale(0)",
+                            filter: "brightness(25)"
+                        }
+                    ], {
+                        duration: 200,
+                        easing: "linear"
+                    }).addEventListener("finish", () => {
+                        overlayHeart.src = `/public/images/${newHeart}-static.webp`;
+                        overlayHeart.animate([
+                            {
+                                transform: "scale(0)",
+                                filter: "brightness(25)"
+                            },
+                            {
+                                transform: "scale(1.05)",
+                                filter: "brightness(25)"
+                            }
+                        ], {
+                            duration: 150,
+                            easing: "linear"
+                        }).addEventListener("finish", () => {
+                            overlayHeart.animate([
+                                {
+                                    transform: "scale(1.05)",
+                                    filter: "brightness(25)"
+
+                                },
+                                {
+                                    transform: "scale(1)",
+                                    filter: "brightness(1)"
+                                }
+                            ], {
+                                duration: 1000,
+                                easing: "linear"
+                            }).addEventListener("finish", () => {
+                                setTimeout(() => {
+                                    overlayText.textContent = text;
+                                    overlayText.classList.remove("hidden");
+                                    setTimeout(() => {
+                                        overlayHeart.src = `/public/images/${newHeart}.webp`;
+                                    }, 1000);
+                                    setTimeout(() => {
+                                        overlayHeart.src = `/public/images/${newHeart}-static.webp`;
+                                    }, 3100);
+                                    setTimeout(() => {
+                                        overlay.classList.add("hidden");
+                                        overlayText.classList.add("hidden");
+                                    }, 4000);
+                                    setTimeout(() => {
+                                        overlay.style.display = "none";
+                                    }, 4500);
+                                }, 750);
+                            });
+                        });
+                    });
+                });
+            }, 500);
+        });
+    }, 10);
+}
+
 for (const item of items) {
     if (item.minPoly > poly
         || (item.maxPoly < poly && item.maxPoly != -1)
@@ -191,58 +296,6 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                 }
                 parent.after(dependent);
             }
-        }
-
-        function explode(oldHeart, newHeart, text = "New currency unlocked!") {
-            let overlay = document.querySelector("div.overlay");
-            let overlayHeart = document.querySelector("img.explosion-subject");
-            let overlayText = document.querySelector("p.explosion-text");
-
-            overlay.style.display = "flex";
-            overlayHeart.src = `/public/images/${oldHeart}-static.webp`;
-            setTimeout(() => {
-                overlay.classList.remove("hidden");
-            }, 10);
-            setTimeout(() => {
-                overlayHeart.classList.add("shaking");
-            }, 600);
-            setTimeout(() => {
-                overlayHeart.classList.add("charging");
-                overlayHeart.classList.remove("shaking");
-            }, 1100);
-            setTimeout(() => {
-                overlayHeart.classList.add("bright");
-                overlayHeart.classList.remove("charging");
-            }, 4100);
-            setTimeout(() => {
-                overlayHeart.classList.add("imploding")
-                overlayHeart.classList.remove("bright");
-            }, 5100);
-            setTimeout(() => {
-                overlayHeart.src = `/public/images/${newHeart}-static.webp`;
-                overlayHeart.classList.add("exploding");
-                overlayHeart.classList.remove("imploding");
-            }, 5400);
-            setTimeout(() => {
-                overlayHeart.classList.add("fading-out");
-                overlayHeart.classList.remove("exploding");
-            }, 5600);
-            setTimeout(() => {
-                overlayHeart.textContent = text;
-                overlayText.classList.remove("hidden");
-                overlayHeart.classList.remove("fading-out");
-            }, 7000);
-            setTimeout(() => {
-                overlayHeart.src = `/public/images/${newHeart}.webp`;
-            }, 8000);
-            setTimeout(() => {
-                overlayHeart.src = `/public/images/${newHeart}-static.webp`;
-                overlay.classList.add("hidden");
-                overlayText.classList.add("hidden");
-            }, 10100);
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 10600);
         }
 
         switch (item.gain.type) {

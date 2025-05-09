@@ -27,9 +27,25 @@ function updateCurrencyUI(currency) {
     }
 
     const value = localStorage.getItem(currency);
-    const delta = ui[currency].value.textContent !== "" ? value - ui[currency].value.textContent : 0;
+    let delta = ui[currency].value.textContent !== "" ? value - ui[currency].value.textContent : 0;
+    if (isNaN(delta)) {
+        delta = 0;
+    }
 
-    ui[currency].value.textContent = value;
+    let valString = value;
+    if (value.length > 5) {
+        valString = `${value.substring(0, value.length - 3)}k`;
+    }
+    if (value.length > 8) {
+        valString = `${value.substring(0, value.length - 6)}M`;
+    }
+    if (value.length > 11) {
+        valString = `${value.substring(0, value.length - 9)}B`;
+    }
+    if (value.length > 14) {
+        valString = `${value.substring(0, value.length - 12)}T`;
+    }
+    ui[currency].value.textContent = valString;
     
     if (delta > 0) {
         ui[currency].change.classList.remove("loss");

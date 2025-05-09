@@ -55,7 +55,7 @@ a:visited {
 
 #clicker-heart.regen {
     transition-property: transform;
-    transition-duration: 1800ms;
+    transition-duration: 1900ms;
     transition-timing-function: linear;
 }
 

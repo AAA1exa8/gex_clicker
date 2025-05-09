@@ -296,6 +296,10 @@ function setHeartByCurrency(currency) {
 }
 
 function clearOwned() {
+    const dev = sessionStorage.getItem("dev");
+    sessionStorage.clear();
+    sessionStorage.setItem("dev", dev);
+
     localStorage.setItem("unlocked-currencies", JSON.stringify({
         bi: true,
         gay: false,
@@ -313,7 +317,7 @@ function clearOwned() {
 
     localStorage.setItem("autoclick-frequency", -1);
 
-    localStorage.setItem("currency-generators", JSON.stringify([]));
+    localStorage.setItem("currency-generators", JSON.stringify({}));
     let ownedItems = {};
     for (const item of items) {
         ownedItems[item.id] = 0;

@@ -102,7 +102,7 @@ function ownsRequirements(item) {
     return true;
 }
 
-function explode(oldHeart, newHeart, text = "New currency unlocked!") {
+function explode(oldHeart, newHeart, text = "New currency unlocked!", refresh = false) {
     let overlay = document.querySelector("div.overlay");
     let overlayHeart = document.querySelector("img.explosion-subject");
     let overlayText = document.querySelector("p.explosion-text");
@@ -196,6 +196,9 @@ function explode(oldHeart, newHeart, text = "New currency unlocked!") {
                                     }, 4000);
                                     setTimeout(() => {
                                         overlay.style.display = "none";
+                                        if (refresh) {
+                                            location.reload();
+                                        }
                                     }, 4500);
                                 }, 750);
                             });
@@ -370,15 +373,14 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                 clearOwned();
                 setHeartByCurrency("bi");
                 if (localStorage.getItem("poly") < 2) {
-                    explode("solypex", "solypex", "Relationship acquired!");
+                    explode("solypex", "solypex", "Relationship acquired!", true);
                 } else if (Number(localStorage.getItem("poly")) === 2) {
-                    explode("solypex", "solypex", "Polyamory achieved!");
+                    explode("solypex", "solypex", "Polyamory achieved!", true);
                 } else if (Number(localStorage.getItem("poly")) >= 8_000_000_000 && prevPoly < 8_000_000_000) {
-                    explode("solypex", "solypex", "Polycule includes everyone!\n..or does it?");
+                    explode("solypex", "solypex", "Polycule includes everyone! ..or does it?", true);
                 } else {
-                    explode("solypex", "solypex", "Polycule expanded!");
+                    explode("solypex", "solypex", "Polycule expanded!", true);
                 }
-                window.location.replace("/index.html");
                 break;
             }
 

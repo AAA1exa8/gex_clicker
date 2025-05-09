@@ -75,6 +75,9 @@ main > hr {
     width: 32px;
     height: 32px;
 }
+.incomplete .achiev-image {
+    filter: grayscale(100%);
+}
 
 .achiev-info,
 .achiev-status  {

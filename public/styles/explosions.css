@@ -1,0 +1,100 @@
+/* stolen from https://www.w3schools.com/howto/howto_css_shake_image.asp */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    transition-duration: 500ms;
+    transition-timing-function: linear;
+    transition-property: opacity;
+}
+
+.overlay.hidden {
+    opacity: 0%;
+}
+
+.overlay .explosion-subject {
+    aspect-ratio: 72/68;
+    height: 50%;
+}
+
+.explosion-subject.shaking {
+    animation: shake 0.25s;
+    animation-iteration-count: 2;
+}
+
+.explosion-subject.charging {
+    transition-property: transform;
+    transform: scale(2);
+    transition-timing-function: ease-out;
+    transition-duration: 3s;
+}
+
+.explosion-subject.bright {
+    animation: shake 0.25s;
+    animation-iteration-count: infinite;
+    transition-property: filter;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+    filter: brightness(25);
+    transform: scale(2);
+}
+
+.explosion-subject.imploding {
+    transition-property: transform;
+    transition-timing-function: linear;
+    transition-duration: 200ms;
+    transform: scale(0.01);
+    filter: brightness(25);
+}
+
+.explosion-subject.exploding {
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    transition-duration: 150ms;
+    transform: scale(1.05);
+    filter: brightness(25);
+}
+
+.explosion-subject.fading-out {
+    transition-property: filter, transform;
+    transition-timing-function: linear;
+    transition-duration: 1000ms;
+    filter: none;
+    transform: scale(1);
+}
+
+.explosion-text {
+    transition-duration: 500ms;
+    transition-property: opacity, margin-bottom;
+    transition-timing-function: linear;
+    opacity: 100%;
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.explosion-text.hidden {
+    opacity: 0%;
+    margin-bottom: calc(-1.25rem - 20px);
+}
+

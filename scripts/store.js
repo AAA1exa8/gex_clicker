@@ -103,7 +103,7 @@ function ownsRequirements(item) {
 }
 
 for (const item of items) {
-    if (item.minPoly > poly 
+    if (item.minPoly > poly
         || (item.maxPoly < poly && item.maxPoly != -1)
         || (owned[item.id] === item.max && item.max === 1)) {
         continue;
@@ -193,6 +193,58 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
             }
         }
 
+        function explode(oldHeart, newHeart, text = "New currency unlocked!") {
+            let overlay = document.querySelector("div.overlay");
+            let overlayHeart = document.querySelector("img.explosion-subject");
+            let overlayText = document.querySelector("p.explosion-text");
+
+            overlay.style.display = "flex";
+            overlayHeart.src = `/public/images/${oldHeart}-static.webp`;
+            setTimeout(() => {
+                overlay.classList.remove("hidden");
+            }, 10);
+            setTimeout(() => {
+                overlayHeart.classList.add("shaking");
+            }, 600);
+            setTimeout(() => {
+                overlayHeart.classList.add("charging");
+                overlayHeart.classList.remove("shaking");
+            }, 1100);
+            setTimeout(() => {
+                overlayHeart.classList.add("bright");
+                overlayHeart.classList.remove("charging");
+            }, 4100);
+            setTimeout(() => {
+                overlayHeart.classList.add("imploding")
+                overlayHeart.classList.remove("bright");
+            }, 5100);
+            setTimeout(() => {
+                overlayHeart.src = `/public/images/${newHeart}-static.webp`;
+                overlayHeart.classList.add("exploding");
+                overlayHeart.classList.remove("imploding");
+            }, 5400);
+            setTimeout(() => {
+                overlayHeart.classList.add("fading-out");
+                overlayHeart.classList.remove("exploding");
+            }, 5600);
+            setTimeout(() => {
+                overlayHeart.textContent = text;
+                overlayText.classList.remove("hidden");
+                overlayHeart.classList.remove("fading-out");
+            }, 7000);
+            setTimeout(() => {
+                overlayHeart.src = `/public/images/${newHeart}.webp`;
+            }, 8000);
+            setTimeout(() => {
+                overlayHeart.src = `/public/images/${newHeart}-static.webp`;
+                overlay.classList.add("hidden");
+                overlayText.classList.add("hidden");
+            }, 10100);
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 10600);
+        }
+
         switch (item.gain.type) {
             case "click-increase-add": {
                 const old = Number(
@@ -203,7 +255,10 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                     old + item.gain.increase,
                 );
                 if (old === 0) {
+                    const oldHeart = localStorage.getItem("heart-image");
                     setHeartByCurrency(item.gain.currency);
+                    const newHeart = localStorage.getItem("heart-image");
+                    explode(oldHeart, newHeart);
                 }
                 break;
             }
@@ -248,12 +303,23 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
             }
 
             case "rebirth": {
+                const prevPoly = Number(localStorage.getItem("poly"));
                 changeCurrencyValue("poly", item.gain.amount);
                 for (const currency of ["bi", "gay", "trans"]) {
                     setCurrencyValue(currency, 0);
                 }
                 clearOwned();
                 setHeartByCurrency("bi");
+                if (localStorage.getItem("poly") < 2) {
+                    explode("solypex", "solypex", "Relationship acquired!");
+                } else if (Number(localStorage.getItem("poly")) === 2) {
+                    explode("solypex", "solypex", "Polyamory achieved!");
+                } else if (Number(localStorage.getItem("poly")) >= 8_000_000_000 && prevPoly < 8_000_000_000) {
+                    explode("solypex", "solypex", "Polycule includes everyone!\n..or does it?");
+                } else {
+                    explode("solypex", "solypex", "Polycule expanded!");
+                }
+                window.location.replace("/index.html");
                 break;
             }
 

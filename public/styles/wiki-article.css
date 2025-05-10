@@ -83,13 +83,20 @@ h3 {
     font-weight: 700;
 }
 
-p img {
+img {
     object-fit: contain;
     height: 0.9em;
 }
 
-p img.icon {
+img.icon {
     margin-left: 5px;
+}
+
+main ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+    gap: 7px;
 }
 
 @media (max-width: 750px) {

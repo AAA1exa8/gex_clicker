@@ -93,6 +93,14 @@ img.icon {
     margin-left: 5px;
 }
 
+img.big {
+    height: 2em;
+}
+
+img.huge {
+    height: 4em;
+}
+
 main ul {
     display: flex;
     flex-direction: column;

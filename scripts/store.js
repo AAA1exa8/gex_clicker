@@ -381,6 +381,7 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                 } else {
                     explode("solypex", "solypex", "Polycule expanded!", true);
                 }
+                localStorage.setItem("gay-class", item.gain.class);
                 break;
             }
 

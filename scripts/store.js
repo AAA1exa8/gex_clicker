@@ -79,6 +79,11 @@ function refreshAvailability(gain = true) {
             cost.classList.add("expensive");
             icon.classList.add("expensive");
         }
+
+        const mul = 1 + item.cost.baseMul * owned[itemID];
+        const add = item.cost.baseIncrease * owned[itemID];
+
+        cost.textContent = item.cost[currency] * mul + add;
     }
 
     for (let buyButton of document.querySelectorAll("item-purchase")) {

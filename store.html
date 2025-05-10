@@ -16,199 +16,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/styles/store.css">
-    <link rel="stylesheet" href="/public/styles/topo-pattern.css">
+    <link rel="stylesheet" href="/public/styles/hideout-pattern.css">
+    <link rel="stylesheet" href="/public/styles/currency-header.css">
+    <link rel="stylesheet" href="/public/styles/explosions.css">
+    <link rel="stylesheet" href="/public/styles/popups.css">
 </head>
-<body class="topography-pattern">
+<body class="hideout-pattern">
+    <header>
+        <ul>
+            <li class="currency" id="bi">
+                <img src="/public/images/sibex-static.webp" alt="bi">
+                <p id="bi-amount"></p>
+                <p id="bi-gain" class="change"></p>
+            </li>
+            <li class="currency" id="gay">
+                <img src="/public/images/saygex-static.webp" alt="gay">
+                <p id="gay-amount"></p>
+                <p id="gay-gain" class="change"></p>
+            </li>
+            <li class="currency" id="trans">
+                <img src="/public/images/sranstex-static.webp" alt="trans">
+                <p id="trans-amount"></p>
+                <p id="trans-gain" class="change"></p>
+            </li>
+            <li class="currency" id="poly">
+                <img src="/public/images/solypex-static.webp" alt="poly">
+                <p id="poly-amount"></p>
+                <p id="poly-gain" class="change"></p>
+            </li>
+        </ul>
+    </header>
     <main>
         <h1>Shop</h1>
         <hr>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
-        <div class="shop-item">
-            <div class="item-info-container">
-                <div class="item-info">
-                    <img src="/public/images/gex_old.gif" alt="" class="item-image">
-                    <p class="item-name">Placeholder Item</p>
-                </div>
-                <div class="item-status">
-                    <p class="item-cost"><img src="/public/images/sibex-static.png" alt="bi" class="currency-icon"> 123</p>
-                    <button class="item-purchase"><i class="fa-solid fa-cart-shopping"></i></button>
-                </div>
-            </div>
-            <p class="item-amount">Owned: 123</p>
-        </div>
+        <footer>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><p>Back</p><i class="fa-solid fa-arrow-left"></i></a></li>
+                    <li><a href="wiki.html"><p>Wiki</p><i class="fa-solid fa-circle-info"></i></a></li>
+                </ul>
+            </nav>
+        </footer>
     </main>
+    <div class="overlay hidden" style="display: none">
+        <img src="/public/images/saygex-static.webp" alt="" class="explosion-subject">
+        <p class="explosion-text hidden">New currency unlocked</p>
+    </div>
 
-    <nav>
-        <a href="index.html"><i class="fa-solid fa-arrow-left"></i></a>
-        <a href="wiki.html"><i class="fa-solid fa-circle-info"></i></a>
-    </nav>
+    <script src="/scripts/init.js"></script>
+    <script src="/scripts/game-currencies.js"></script>
+    <script src="/scripts/game-main.js"></script>
+    <script src="/scripts/store.js"></script>
 </body>
 </html>

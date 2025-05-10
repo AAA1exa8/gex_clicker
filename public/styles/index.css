@@ -10,60 +10,53 @@ body {
     background-color: #91D8E4;
     image-rendering: pixelated;
     font-family: 'Roboto', sans-serif;
+    color: #07485B;
 }
 
 a:link {
-    color: black;
+    color: #07485B;
     text-decoration: none;
 }
 
 a:visited {
-    color: black;
+    color: #07485B;
     text-decoration: none;
 }
 
-header {
-    height: 5%;
-    width: 70%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #BFEAF5;
-    border-radius: 0 0 10px 10px;
-}
 
-.currency {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    font-size: 1.5rem;
-}
-
-.currency > img {
-    padding: 5px;
-    height: 32px;
-}
-
-main {
+#clicker-heart {
     box-sizing: border-box;
-    background-image: url("/public/images/gex_new-static.png");
+    max-width: 90%;
     flex-grow: 1;
     flex-shrink: 0;
-    width: 50%;
+    aspect-ratio: 72/68;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     margin: 50px;
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
 }
 
-main:hover {
+#clicker-heart:hover:not(.clicked):not(.regen) {
     transform: scale(1.05);
-    background-image: url("/public/images/gex_new.gif");
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
 }
 
-main:active {
-    transform: scale(0.9);
+#clicker-heart.clicked {
+    transform: scale(0.1);
+    transition-property: transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+}
+
+#clicker-heart.regen {
+    transition-property: transform;
+    transition-duration: 1900ms;
+    transition-timing-function: linear;
 }
 
 nav {
@@ -75,11 +68,38 @@ nav {
     margin: 3px 0;
     background-color: #BFEAF5;
     border-radius: 10px;
-    gap: 10px;
+    gap: 20px;
+}
+
+nav > * {
+    position: relative;
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    display: flex;
+    justify-content: center;
 }
 
 nav > *:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(2deg);
+}
+
+nav > a > p {
+    position: absolute;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    bottom: calc(100% + 13px);
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: 80ms;
+    transition-timing-function: ease-in-out;
+}
+
+nav > a:hover > p {
+    transform: scale(1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,12 +108,14 @@ nav > *:hover {
         color: #8EC7D2;
     }
 
-    header {
-        background-color: #07485B;
-    }
-
     nav {
         background-color: #07485B;
+        color: #8EC7D2;
+    }
+
+    nav > a > p {
+        background-color: black;
+        color: white;
     }
 
     i {
@@ -108,6 +130,14 @@ nav > *:hover {
 
     header {
         border-radius: 10px 10px 0 0;
-        width: 90%;
+    }
+
+    nav > a > p {
+        bottom: auto;
+        top: calc(100% + 13px);
+    }
+
+    #clicker-heart {
+        max-width: 80%;
     }
 }

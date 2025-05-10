@@ -4,15 +4,48 @@
 }
 
 nav {
-    box-sizing: border-box;
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
+}
+
+nav>ul {
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 0 10px;
+}
+
+nav li {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+nav a,
+nav a:link,
+nav a:visited {
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+    border-radius: 8px;
+    background-color: #07485B;
+    color: #BFEAF5;
+    text-decoration: none;
+    transition-property: background-color transform border-radius;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+}
+
+nav a:hover {
+    background-color: #0d5970;
+    transform: scale(1.05);
+    border-radius: 5px;
 }
 
 .bottom {
+    position: sticky;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -20,19 +53,22 @@ nav {
     flex-shrink: 0;
     justify-content: end;
     align-items: center;
+    bottom: 10px;
 }
 
 .paragraph-with-aside {
     width: calc(100% + 35px + 25vw);
     display: flex;
+    flex-direction: row;
     position: relative;
 }
 
-.paragraph-with-aside > p {
+.paragraph-with-aside>p,
+.paragraph-with-aside>section {
     width: calc(100% - 35px - 25vw);
 }
 
-.paragraph-with-aside > aside {
+.paragraph-with-aside>aside {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -42,12 +78,88 @@ nav {
     margin-left: 55px;
     padding: 10px;
     border-radius: 10px;
-    margin-top: -5px;
+    height: fit-content;
+    gap: 10px;
 }
 
 h3 {
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+img {
+    object-fit: contain;
+    height: 0.9em;
+    width: fit-content;
+}
+
+img.icon {
+    margin-left: 5px;
+}
+
+img.standalone {
+    height: 2em;
+}
+
+img.big {
+    height: 4em;
+}
+
+img.huge {
+    height: 6em;
+}
+
+main ul,
+main ol {
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+    gap: 7px;
+}
+
+.alert {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    height: fit-content;
+    gap: 10px;
+    color: #BFEAF5;
+}
+
+.alert.info {
+    background-color: #07485B;
+}
+
+.alert.advice {
+    background-color: #466F46;
+}
+
+.alert.warning {
+    background-color: #b58905;
+}
+
+.alert.danger {
+    background-color: rgb(186, 30, 30);
+}
+
+blockquote {
+    border-left: 5px solid #91D8E4;
+    padding: 15px 0;
+    padding-left: 32px;
+}
+
+@media (max-width: 750px) {
+    nav a {
+        font-size: 0;
+    }
+
+    nav a i {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 650px) {
@@ -60,11 +172,11 @@ h3 {
         width: calc(100% + 35px + 30vw);
     }
 
-    .paragraph-with-aside > p {
+    .paragraph-with-aside>p {
         width: calc(100% - 35px - 30vw);
     }
 
-    .paragraph-with-aside > aside {
+    .paragraph-with-aside>aside {
         width: calc(30vw - 40px);
     }
 }
@@ -80,11 +192,11 @@ h3 {
         flex-direction: column;
     }
 
-    .paragraph-with-aside > p {
+    .paragraph-with-aside>p {
         width: 100%;
     }
 
-    .paragraph-with-aside > aside {
+    .paragraph-with-aside>aside {
         width: 100%;
         color: #BFEAF5;
         background-color: black;
@@ -92,15 +204,68 @@ h3 {
         max-width: none;
         margin-left: 0;
     }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    nav a i {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    nav a {
+        font-size: 0;
+    }
+
+    nav a i {
+        font-size: 0.9rem;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-    .paragraph-with-aside > aside {
+    .paragraph-with-aside>aside {
         background-color: #07485B;
     }
 
+    nav a,
+    nav a:link,
+    nav a:visited {
+        background-color: #8EC7D2;
+        color: #07485B;
+    }
+
+    nav a:hover {
+        background-color: #97d3df;
+    }
+
+    .alert {
+        color: #07485B;
+    }
+
+    .alert.info {
+        background-color: #8EC7D2;
+    }
+
+    .alert.advice {
+        background-color: #6bac6b;
+    }
+
+    .alert.warning {
+        background-color: #c8990d;
+    }
+
+    .alert.danger {
+        background-color: rgb(233, 82, 82);
+    }
+
+    blockquote {
+        border-left-color: #0D6986;
+    }
+
     @media (max-width: 550px) {
-        .paragraph-with-aside > aside {
+        .paragraph-with-aside>aside {
             color: #07485B;
             background-color: #8EC7D2;
         }

@@ -21,13 +21,38 @@ const storeItems = [
             trans: 0,
             poly: 0,
             baseMul: 0,
-            baseIncrease: 10,
-            polyMul: 1.1,
+            baseIncrease: 5,
+            polyMul: 1,
             polyIncrease: 0,
         },
         gain: {
             type: "click-increase-add",
             currency: "bi",
+            increase: 1
+        }
+    },
+    {
+        id: "0-stonewall",
+        name: "Stand up against oppression",
+        iconPath: "/public/images/icons/Stonewall.jpg",
+        description: "Unlocks <img src='/public/images/saygex-static.webp' alt='gay'>",
+        max: 1,
+        minPoly: 0,
+        maxPoly: -1,
+        requires: [],
+        cost: {
+            bi: 200,
+            gay: 0,
+            trans: 0,
+            poly: 0,
+            baseMul: 0,
+            baseIncrease: 0,
+            polyMul: 0,
+            polyIncrease: 0,
+        },
+        gain: {
+            type: "click-increase-add",
+            currency: "gay",
             increase: 1
         }
     }

@@ -61,7 +61,8 @@ nav a:hover {
     position: relative;
 }
 
-.paragraph-with-aside > p {
+.paragraph-with-aside > p,
+.paragraph-with-aside > section {
     width: calc(100% - 35px - 25vw);
 }
 
@@ -87,21 +88,27 @@ h3 {
 img {
     object-fit: contain;
     height: 0.9em;
+    width: fit-content;
 }
 
 img.icon {
     margin-left: 5px;
 }
 
-img.big {
+img.standalone {
     height: 2em;
 }
 
-img.huge {
+img.big {
     height: 4em;
 }
 
-main ul {
+img.huge {
+    height: 6em;
+}
+
+main ul,
+main ol {
     display: flex;
     flex-direction: column;
     padding-left: 32px;

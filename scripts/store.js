@@ -36,16 +36,16 @@ function getItemCostHTML(item) {
 
     const mul = 1 + item.cost.baseMul * owned[item.id];
     const add = item.cost.baseIncrease * owned[item.id];
-    if (item.cost.bi * mul + add !== 0) {
+    if (item.cost.bi !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-bi"><img src="/public/images/sibex-static.webp" alt="bi" class="currency-icon"> ${item.cost.bi * mul + add}</p>`;
     }
-    if (item.cost.gay * mul + add !== 0) {
+    if (item.cost.gay !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-gay"><img src="/public/images/saygex-static.webp" alt="gay" class="currency-icon"> ${item.cost.gay * mul + add}</p>`;
     }
-    if (item.cost.trans * mul + add !== 0) {
+    if (item.cost.trans !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-trans"><img src="/public/images/sranstex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
-    if (item.cost.poly * mul + add !== 0) {
+    if (item.cost.poly !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-poly"><img src="/public/images/solypex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
 
@@ -53,9 +53,7 @@ function getItemCostHTML(item) {
 }
 
 function refreshAvailability(gain = true) {
-    for (let cost of document.querySelectorAll(
-        gain ? ".item-cost.expensive" : ".item-cost:not(.expensive)",
-    )) {
+    for (let cost of document.querySelectorAll(".item-cost")) {
         const splitID = cost.id.split("-");
         const currency = splitID[splitID.length - 1];
         const itemID = cost.id.substring(
@@ -63,22 +61,28 @@ function refreshAvailability(gain = true) {
             cost.id.length - currency.length - 1,
         );
         const item = items.find(v => v.id === itemID);
-        let icon = document.getElementById(`${item.id}-icon`);
 
         if (owned[itemID] === item.max) {
             cost.style.display = "none";
-            icon.style.display = "none";
             continue;
         }
 
         if (gain && canBuyItemCurrency(item, currency)) {
             cost.classList.remove("expensive");
-            icon.classList.remove("expensive");
         }
         if (!gain && !canBuyItemCurrency(item, currency)) {
             cost.classList.add("expensive");
-            icon.classList.add("expensive");
         }
+
+        const mul = 1 + item.cost.baseMul * owned[itemID];
+        const add = item.cost.baseIncrease * owned[itemID];
+        const finalCost = item.cost[currency] * mul + add;
+
+        cost.innerHTML = `<img src="/public/images/${
+            currency === "bi" ? "sibex" :
+            currency === "gay" ? localStorage.getItem("gay-class") :
+            currency === "trans" ? "sranstex" : "solypex"
+        }-static.webp" alt="${currency}" class="currency-icon"> ${finalCost}`;
     }
 
     for (let buyButton of document.querySelectorAll("item-purchase")) {
@@ -262,12 +266,19 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
         }
 
         const ownedUI = document.getElementById(`${item.id}-owned`);
-        changeCurrencyValue("bi", -item.cost.bi);
-        changeCurrencyValue("gay", -item.cost.gay);
-        changeCurrencyValue("trans", -item.cost.trans);
-        changeCurrencyValue("poly", -item.cost.poly);
-        refreshAvailability(false);
+        const mul = 1 + item.cost.baseMul * owned[item.id];
+        const add = item.cost.baseIncrease * owned[item.id];
+
         owned[item.id] += 1;
+
+        for (const currency of ["bi", "gay", "trans", "poly"]) {
+            if (item.cost[currency] === 0) {
+                continue;
+            }
+            const finalCost = item.cost[currency] * mul + add;
+            changeCurrencyValue(currency, -finalCost);
+        }
+        refreshAvailability(false);
         localStorage.setItem("owned", JSON.stringify(owned));
         ownedUI.textContent = `(${owned[item.id]})`;
 

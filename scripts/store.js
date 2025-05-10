@@ -36,16 +36,16 @@ function getItemCostHTML(item) {
 
     const mul = 1 + item.cost.baseMul * owned[item.id];
     const add = item.cost.baseIncrease * owned[item.id];
-    if (item.cost.bi * mul + add !== 0) {
+    if (item.cost.bi !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-bi"><img src="/public/images/sibex-static.webp" alt="bi" class="currency-icon"> ${item.cost.bi * mul + add}</p>`;
     }
-    if (item.cost.gay * mul + add !== 0) {
+    if (item.cost.gay !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-gay"><img src="/public/images/saygex-static.webp" alt="gay" class="currency-icon"> ${item.cost.gay * mul + add}</p>`;
     }
-    if (item.cost.trans * mul + add !== 0) {
+    if (item.cost.trans !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-trans"><img src="/public/images/sranstex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
-    if (item.cost.poly * mul + add !== 0) {
+    if (item.cost.poly !== 0) {
         result += `<p class="item-cost ${canBuyItem(item) ? "" : "expensive"}" id="${item.id}-poly"><img src="/public/images/solypex-static.webp" alt="trans" class="currency-icon"> ${item.cost.trans * mul + add}</p>`;
     }
 

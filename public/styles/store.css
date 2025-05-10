@@ -144,6 +144,10 @@ main > hr {
     font-weight: 300;
 }
 
+.item-desc img {
+    height: 0.7rem;
+}
+
 footer {
     display: flex;
     flex-direction: column;

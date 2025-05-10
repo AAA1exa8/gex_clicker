@@ -57,6 +57,7 @@ nav a:hover {
 .paragraph-with-aside {
     width: calc(100% + 35px + 25vw);
     display: flex;
+    flex-direction: row;
     position: relative;
 }
 

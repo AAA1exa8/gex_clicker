@@ -53,9 +53,7 @@ function getItemCostHTML(item) {
 }
 
 function refreshAvailability(gain = true) {
-    for (let cost of document.querySelectorAll(
-        gain ? ".item-cost.expensive" : ".item-cost:not(.expensive)",
-    )) {
+    for (let cost of document.querySelectorAll(".item-cost")) {
         const splitID = cost.id.split("-");
         const currency = splitID[splitID.length - 1];
         const itemID = cost.id.substring(
@@ -267,10 +265,13 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
         }
 
         const ownedUI = document.getElementById(`${item.id}-owned`);
-        changeCurrencyValue("bi", -item.cost.bi);
-        changeCurrencyValue("gay", -item.cost.gay);
-        changeCurrencyValue("trans", -item.cost.trans);
-        changeCurrencyValue("poly", -item.cost.poly);
+        const mul = 1 + item.cost.baseMul * owned[itemID];
+        const add = item.cost.baseIncrease * owned[itemID];
+
+        changeCurrencyValue("bi", -item.cost.bi * mul - add);
+        changeCurrencyValue("gay", -item.cost.gay * mul - add);
+        changeCurrencyValue("trans", -item.cost.trans * mul - add);
+        changeCurrencyValue("poly", -item.cost.poly * mul - add);
         refreshAvailability(false);
         owned[item.id] += 1;
         localStorage.setItem("owned", JSON.stringify(owned));

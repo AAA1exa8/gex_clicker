@@ -1,9 +1,12 @@
 const achievements = [
     {
-        id: "test",
-        name: "Name",
-        iconPath: "/public/images/gex_old.gif",
-        description: "test"
+        id: "0-bi-novice",
+        name: "Bisexual Novice",
+        iconPath: "/public/images/sibex-static.webp",
+        description: "Gain 50 <img src='/public/images/sibex-static.webp' alt='bi'>",
+        type: "currency",
+        what: "bi",
+        amount: 50
     }
 ];
 
@@ -31,6 +34,7 @@ function completeAchievement(achiev) {
 
     let container = document.createElement("div");
     container.classList.add("popup-container");
+    container.classList.add("hidden");
     let inner = "";
 
     inner += `<article class="popup-achiev">`;

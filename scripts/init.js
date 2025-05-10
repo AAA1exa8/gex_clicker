@@ -5,7 +5,33 @@ function initStorage(key, value) {
     }
 }
 
-const storeItems = [];
+const storeItems = [
+    {
+        id: "0-lemon-bar",
+        name: "Lemon bar",
+        iconPath: "/public/images/icons/Lemon-bar.png",
+        description: "Increases <img src='/public/images/sibex-static.webp' alt='bi'> per click by 1",
+        max: 4,
+        minPoly: 0,
+        maxPoly: -1,
+        requires: [],
+        cost: {
+            bi: 10,
+            gay: 0,
+            trans: 0,
+            poly: 0,
+            baseMul: 0,
+            baseIncrease: 10,
+            polyMul: 1.1,
+            polyIncrease: 0,
+        },
+        gain: {
+            type: "click-increase-add",
+            currency: "bi",
+            increase: 1
+        }
+    }
+];
 
 const devStoreItems = [
     {

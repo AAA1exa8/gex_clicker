@@ -102,6 +102,10 @@ main > hr {
     margin-left: 44px;
 }
 
+.achiev-desc img {
+    height: 0.7rem;
+}
+
 footer {
     display: flex;
     flex-direction: column;

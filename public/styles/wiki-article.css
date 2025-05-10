@@ -83,6 +83,15 @@ h3 {
     font-weight: 700;
 }
 
+p img {
+    object-fit: contain;
+    height: 0.9em;
+}
+
+p img.icon {
+    margin-left: 5px;
+}
+
 @media (max-width: 750px) {
     nav a {
         font-size: 0;

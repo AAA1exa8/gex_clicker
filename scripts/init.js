@@ -213,7 +213,6 @@ const devStoreItems = [
 const items = sessionStorage.getItem("dev") ? devStoreItems : storeItems;
 
 function init() {
-    // TODO: HANDLE CLASS SELECTION!
     initStorage("heart-image", "sibex");
     initStorage("gay-class", "saygex");
 

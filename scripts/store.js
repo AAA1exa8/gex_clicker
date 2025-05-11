@@ -308,7 +308,6 @@ for (const purchase of document.querySelectorAll(".item-purchase")) {
                 ) {
                     dependent.style.display = "flex";
                 }
-                parent.after(dependent);
             }
         }
 

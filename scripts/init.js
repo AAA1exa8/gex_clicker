@@ -19,6 +19,14 @@ function init() {
         location.reload();
     }
 
+    if (location.href.includes("clicker.saygex.gay")) {
+        //<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+        let script = document.createElement("script");
+        script.setAttribute("disable-devtool-auto", "");
+        script.setAttribute("src", "https://cdn.jsdelivr.net/npm/disable-devtool");
+        document.head.append(script);
+    }
+
     initStorage("heart-image", "sibex");
     initStorage("gay-class", "saygex");
 

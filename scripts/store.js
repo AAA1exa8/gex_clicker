@@ -251,7 +251,7 @@ for (const item of items) {
 
     entry.innerHTML = inner;
 
-    if (!ownsRequirements(item)) {
+    if (!ownsRequirements(item) && !sessionStorage.getItem("dev-view")) {
         entry.style.display = "none";
     }
 

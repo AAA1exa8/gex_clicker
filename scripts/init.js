@@ -65,6 +65,15 @@ function init() {
 init();
 
 // === CONSOLE COMMANDS ===
+const on = true;
+const off = false;
+function devView(val) {
+    if (val) {
+        sessionStorage.setItem("dev-view", true);
+    } else {
+        sessionStorage.removeItem("dev-view");
+    }
+}
 
 function dev() {
     localStorage.clear();

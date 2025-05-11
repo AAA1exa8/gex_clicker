@@ -31,7 +31,7 @@
     gap: 10px;
 }
 
-.popup-achiev img {
+.popup-group > img {
     height: 80%;
     max-height: 64px;
 }
@@ -57,6 +57,11 @@
 .popup-achiev p {
     font-weight: 300;
     font-size: 0.9rem;
+}
+
+.popup-achiev p img {
+    object-fit: contain;
+    height: 0.9em;
 }
 
 @media (prefers-color-scheme: dark) {

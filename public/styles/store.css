@@ -13,6 +13,10 @@ body {
     color: #07485B;
 }
 
+img {
+    object-fit: contain;
+}
+
 a:link {
     color: #07485B;
     text-decoration: none;

@@ -73,6 +73,7 @@ function devView(val) {
     } else {
         sessionStorage.removeItem("dev-view");
     }
+    location.reload();
 }
 
 function dev() {

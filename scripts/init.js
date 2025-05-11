@@ -5,6 +5,8 @@ function initStorage(key, value) {
     }
 }
 
+const latestVersion = "BETA-0";
+
 const storeItems = [
     {
         id: "0-lemon-bar",
@@ -264,6 +266,15 @@ const devStoreItems = [
 const items = sessionStorage.getItem("dev") ? devStoreItems : storeItems;
 
 function init() {
+    initStorage("version", latestVersion);
+    const version = localStorage.getItem("version");
+
+    if (version !== latestVersion) {
+        alert(`You are loading a newer, incompatible version. Progress will be cleared. You can download version ${version} from the github. Your data:\n${JSON.stringify(localStorage)}`);
+        localStorage.clear();
+        location.reload();
+    }
+
     initStorage("heart-image", "sibex");
     initStorage("gay-class", "saygex");
 

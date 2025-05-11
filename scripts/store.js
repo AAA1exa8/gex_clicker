@@ -99,7 +99,7 @@ function refreshAvailability(gain = true) {
 
 function ownsRequirements(item) {
     for (const id of item.requires) {
-        if (owned[id] === items.find((v) => v.max)) {
+        if (owned[id] < items.find((v) => v.id === id).max) {
             return false;
         }
     }

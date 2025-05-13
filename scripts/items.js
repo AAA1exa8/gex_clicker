@@ -1,4 +1,5 @@
 const storeItems = [
+    // === TIER 0 BI ===
     {
         id: "0-lemon-bar",
         name: "Lemon bar",
@@ -54,7 +55,7 @@ const storeItems = [
         name: "Lemon bar tray",
         iconPath: "/public/images/icons/Lemon-bar-tray.jpg",
         description: "Increases <img src='/public/images/sibex-static.webp' alt='bi'> per click by 5",
-        max: 18,
+        max: 8,
         minPoly: 0,
         maxPoly: -1,
         requires: ["0-quality-lemons"],
@@ -75,8 +76,8 @@ const storeItems = [
         }
     },
     {
-        id: "0-village-chef",
-        name: "Village chef",
+        id: "0-gus-chef",
+        name: "Local chef",
         iconPath: "/public/images/icons/Gus.png",
         description: "Produces 5 <img src='/public/images/sibex-static.webp' alt='bi'> every 10s",
         max: 5,
@@ -100,6 +101,7 @@ const storeItems = [
             frequency: 10_000 //10s
         }
     },
+    // === TIER 0 GAY ===
     {
         id: "0-stonewall",
         name: "Stand up against oppression",
@@ -122,6 +124,57 @@ const storeItems = [
         gain: {
             type: "click-increase-add",
             currency: "gay",
+            increase: 1
+        }
+    },
+    {
+        id: "0-visit-pride",
+        name: "Visit pride",
+        iconPath: "/public/images/icons/ProgressPride.png",
+        description: "Increases <img src='/public/images/saygex-static.webp' alt='gay'> per click by 1",
+        max: 4,
+        minPoly: 0,
+        maxPoly: -1,
+        requires: [],
+        cost: {
+            bi: 0,
+            gay: 10,
+            trans: 0,
+            poly: 0,
+            baseMul: 0,
+            baseIncrease: 5,
+            polyMul: 0,
+            polyIncrease: 0,
+        },
+        gain: {
+            type: "click-increase-add",
+            currency: "gay",
+            increase: 1
+        }
+    },
+    // === TIER 0 TRANS ===
+    {
+        id: "0-shell-crack",
+        name: "Find out",
+        iconPath: "/public/images/icons/Tud.png",
+        description: "Unlocks <img src='/public/images/sranstex-static.webp' alt='trans'>",
+        max: 1,
+        minPoly: 0,
+        maxPoly: -1,
+        requires: ["0-stonewall"],
+        cost: {
+            bi: 0,
+            gay: 500,
+            trans: 0,
+            poly: 0,
+            baseMul: 0,
+            baseIncrease: 0,
+            polyMul: 0,
+            polyIncrease: 0,
+        },
+        gain: {
+            type: "click-increase-add",
+            currency: "trans",
             increase: 1
         }
     }

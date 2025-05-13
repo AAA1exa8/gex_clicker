@@ -5,7 +5,7 @@ function initStorage(key, value) {
     }
 }
 
-const latestVersion = "BETA-0-WBA";
+const latestVersion = "BETA-1";
 
 const items = sessionStorage.getItem("dev") ? devStoreItems : storeItems;
 
